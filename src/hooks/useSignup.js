@@ -6,6 +6,11 @@ function useSignup() {
   const [loading, setLoading] = useState(false);
   const { setAuthUser } = useAuthContext();
 
+  const API_BASE_URL =
+    import.meta.env.MODE === "development"
+      ? ""
+      : "https://chat-api-production-2c0b.up.railway.app";
+
   const signup = async ({
     fullName,
     username,
@@ -25,7 +30,7 @@ function useSignup() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -6,11 +6,16 @@ const useSendMessage = () => {
   const [loading, setLoading] = useState(false);
   const { messages, setMessages, selectedConversation } = useConversation();
 
+  const API_BASE_URL =
+    import.meta.env.MODE === "development"
+      ? ""
+      : "https://chat-api-production-2c0b.up.railway.app";
+
   const sendMessage = async (message) => {
     setLoading(true);
     try {
       const res = await fetch(
-        `/api/messages/send/${selectedConversation._id}`,
+        `${API_BASE_URL}}/api/messages/send/${selectedConversation._id}`,
         {
           method: "POST",
           headers: {
