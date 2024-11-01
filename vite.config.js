@@ -9,6 +9,7 @@ export default defineConfig({
       "/api": {
         target: "https://chat-api-production-2c0b.up.railway.app/",
         changeOrigin: true,
+        secure: false, // For development only
       },
     },
   },
