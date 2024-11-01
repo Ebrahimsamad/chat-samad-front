@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://chat-api-pearl-two.vercel.app", {
+      const socket = io("https://chat-api-production-2c0b.up.railway.app", {
         query: {
           userId: authUser._id,
         },
