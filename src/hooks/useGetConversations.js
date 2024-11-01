@@ -16,7 +16,7 @@ function useGetConversations() {
       try {
         const res = await fetch(`${API_BASE_URL}/api/users`, {
           method: "GET",
-          credentials: "include", // Include credentials
+          credentials: "include",
         });
         const data = await res.json();
 

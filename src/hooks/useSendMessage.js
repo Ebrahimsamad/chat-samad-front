@@ -22,6 +22,7 @@ const useSendMessage = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ message }),
+          credentials: "include", // Include cookies in the request
         }
       );
       const data = await res.json();
@@ -37,4 +38,5 @@ const useSendMessage = () => {
 
   return { sendMessage, loading };
 };
+
 export default useSendMessage;

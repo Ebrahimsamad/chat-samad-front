@@ -12,10 +12,12 @@ function useLogout() {
       : "https://chat-api-production-2c0b.up.railway.app";
 
   const logout = async () => {
+    setLoading(true); // Set loading to true at the start of logout
     try {
       const res = await fetch(`${API_BASE_URL}/api/auth/logout`, {
         method: "POST",
         headers: { "content-type": "application/json" },
+        credentials: "include", // Include cookies in the request
       });
       const data = await res.json();
 

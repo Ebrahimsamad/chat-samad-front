@@ -40,6 +40,7 @@ function useSignup() {
           confirmPassword,
           gender,
         }),
+        credentials: "include",
       });
 
       const data = await res.json();
@@ -53,7 +54,7 @@ function useSignup() {
 
       console.log(data);
     } catch (error) {
-      toast.error(error);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
