@@ -14,13 +14,18 @@ function useGetConversations() {
     const getConversations = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${API_BASE_URL}/api/users`);
-        const data = await res.json();
+        const res = await fetch(`${API_BASE_URL}/api/users`, {
+          method: "GET",
+          credentials: "include", // Include cookies in requests
+        });
 
-        if (data.error) {
-          throw new Error(data.error);
+        // Check if the response is okay (status code 200-299)
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.error || "Failed to fetch conversations");
         }
 
+        const data = await res.json();
         setConversations(data);
       } catch (error) {
         toast.error(error.message);
@@ -28,6 +33,7 @@ function useGetConversations() {
         setLoading(false);
       }
     };
+
     getConversations();
   }, []);
 
