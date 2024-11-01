@@ -3,7 +3,7 @@ import GenderCheckbox from "./GenderCheckbox";
 import { useState } from "react";
 import useSignup from "../../hooks/useSignup";
 
-const Signup = () => {
+const SignUp = () => {
   const [inputs, setInputs] = useState({
     fullName: "",
     username: "",
@@ -22,6 +22,7 @@ const Signup = () => {
     e.preventDefault();
     await signup(inputs);
   };
+
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
@@ -36,7 +37,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              placeholder="Enter fullName"
+              placeholder="Enter Fullname"
               className="w-full input input-bordered  h-10"
               value={inputs.fullName}
               onChange={(e) =>
@@ -51,7 +52,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              placeholder="Enter username"
+              placeholder="Enter Username"
               className="w-full input input-bordered h-10"
               value={inputs.username}
               onChange={(e) =>
@@ -120,4 +121,4 @@ const Signup = () => {
     </div>
   );
 };
-export default Signup;
+export default SignUp;
